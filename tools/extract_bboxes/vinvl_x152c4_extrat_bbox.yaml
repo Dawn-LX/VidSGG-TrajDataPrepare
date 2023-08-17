@@ -1,6 +1,6 @@
 MODEL:
     META_ARCHITECTURE: "AttrRCNN"
-    WEIGHT: "pretrained_model/gqa/gqa_X152C4_vrdvgvrd_lr0.003_bsz8_objscore005_nooverlap/model_0080000.pth"
+    WEIGHT: "pretrained_model/vinvl_vg_x152c4.pth"
     BACKBONE:
       CONV_BODY: "R-152-C4"
     RESNETS:
@@ -22,7 +22,8 @@ MODEL:
     ROI_ATTRIBUTE_HEAD:
       NUM_ATTRIBUTES: 525
       POSTPROCESS_ATTRIBUTES_THRESHOLD: 0.05
-    ATTRIBUTE_ON: True
+    ATTRIBUTE_ON: False  ############## gkf: we only need bbox and label
+    RELATION_ON: False
 INPUT:
     MIN_SIZE_TEST: 600
     MAX_SIZE_TEST: 1000
@@ -49,8 +50,7 @@ TEST:
     SKIP_PERFORMANCE_EVAL: True
     SAVE_PREDICTIONS: True
     SAVE_RESULTS_TO_TSV: True
-    TSV_SAVE_SUBSET: ['rect', 'class', 'conf', 'feature'] # 'feature' stands for bbox feature
-    # TSV_SAVE_SUBSET: ['rect', 'class', 'conf', 'feature','relation_feature'] # 'relation_feature' stands for union bbox feature
+    TSV_SAVE_SUBSET: ['rect', 'class', 'conf', 'feature']
     GATHER_ON_CPU: True
 OUTPUT_DIR: "./output/X152C5_test"
 DATA_DIR: "./datasets"

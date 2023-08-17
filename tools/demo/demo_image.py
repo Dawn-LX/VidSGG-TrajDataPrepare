@@ -57,7 +57,7 @@ def main():
                         help="labelmap file to select classes for visualizatioin")
     parser.add_argument("--save_file", required=False, type=str, default=None,
                         help="filename to save the proceed image")
-    parser.add_argument("--visualize_attr", action="store_true",
+    parser.add_argument("--visualize_attr", action="store_true",   # 'store_true' 代表运行程序时加上 --visualize_attr， 就代表 visualize_attr取True， 不加的时候就默认False
                         help="visualize the object attributes")
     parser.add_argument("--visualize_relation", action="store_true",
                         help="visualize the relationships")
@@ -175,3 +175,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+    '''
+    python tools/demo/demo_image.py \
+    --config_file sgg_configs/vgattr/vinvl_x152c4.yaml \
+    --img_file demo/000664.JPEG \
+    --save_file output/000664.obj.jpg \
+    MODEL.WEIGHT pretrained_model/vinvl_vg_x152c4.pth \
+    MODEL.ROI_HEADS.NMS_FILTER 1 \
+    MODEL.ROI_HEADS.SCORE_THRESH 0.2 \
+    TEST.IGNORE_BOX_REGRESSION False
+    '''

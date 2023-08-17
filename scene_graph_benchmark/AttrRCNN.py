@@ -81,7 +81,7 @@ class AttrRCNN(GeneralizedRCNN):
                     null_loss += 0.0 * param.sum()
                 proposal_losses = {'rpn_null_loss', null_loss}
         else:
-            proposals, proposal_losses = self.rpn(images, features, targets)
+            proposals, proposal_losses = self.rpn(images, features, targets)  # gkf: proposals is a list of `BoxList` objects
 
         x, predictions, detector_losses = self.roi_heads(features,
                                                          proposals, targets)
