@@ -15,7 +15,8 @@ We use `vinvl_vg_x152c4` as the pre-trained detector to do stages  1) & 3), and 
     - For VidOR, beacuse the number of videos is very large (i.e., 7000), we use `VideoReader` from [decord](https://github.com/dmlc/decord) to load videos. It saves the memory and improves speed than using open-cv.
 
 2. object tracking:
-    - TODO
+    - We use Seq-NMS following [VidVRD-II](https://github.com/Dawn-LX/VidVRD-II-backup).
+    - We modified the seq_nms script a bit. TODO: we will release the seq_nms scripts
 
 3. extract RoI features:
     - For VidVRD, refer to `tools/extract_features/extract_traj_features.py`
